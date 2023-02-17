@@ -1,2 +1,2 @@
 Ubuntu 22 Autoinstall Steps
-Please checck README.txt for more info.
+Please check README.txt for more info.
