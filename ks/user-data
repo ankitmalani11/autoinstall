@@ -1,0 +1,44 @@
+#cloud-config
+autoinstall:
+  version: 1
+  updates: security
+  apt:
+    disable_suites: [all]
+  identity:
+    hostname: ubuntu
+    password: $6$rounds=4096$owyF/FOGCJmUz.s2$vVpJh.SVoTHqmgnqM82KT1cLgKGY5H2LZcerg9AkhvFFmbGSyNMnNG3n439bU5vWZ6.J0EbMPxYsNp4EMdXBX1
+    realname: ubuntu
+    username: ubuntu
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: us
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  ssh:
+    allow-pw: true
+    authorized-keys: []
+    install-server: true
+  early-commands:
+# Detect and update efi or bios related setting for lvm partitioning
+    - /media/cdrom/ks/device-update.sh
+  storage:
+    config:
+# Partition table    
+    - {ptable: gpt, path: /dev/DEV_ROOT, wipe: superblock, preserve: false, name: '', grub_device: false, type: disk, id: disk-sda}
+    swap:
+      swap: 0
+  packages:
+    - openssh-server
+    - nano
+  late-commands:
+    - curtin in-target --target=/target -- apt update
+#    - curtin in-target --target=/target -- apt --purge -y --quiet=2 autoremove
+    - curtin in-target --target=/target -- apt clean
+  user-data:
+    disable_root: false
+    chpasswd:
+      expire: false
+      list:
+        - root: $6$rounds=4096$owyF/FOGCJmUz.s2$vVpJh.SVoTHqmgnqM82KT1cLgKGY5H2LZcerg9AkhvFFmbGSyNMnNG3n439bU5vWZ6.J0EbMPxYsNp4EMdXBX1
