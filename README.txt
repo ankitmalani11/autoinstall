@@ -20,6 +20,7 @@ mkdir -p ubuntu_custom_iso/ks
 touch ubuntu_custom_iso/ks/meta-data
 cp user-data ubuntu_custom_iso/ks/
 cp device-update.sh ubuntu_custom_iso/ks/
+chmod +x ubuntu_custom_iso/ks/device-update.sh
 
 # Update the cloud-init user-data config in grub.cfg for autoinstall    
 sed -i 's|\/casper\/vmlinuz|\/casper\/vmlinuz quiet autoinstall ds=nocloud\\;s=\/cdrom\/ks\/|g' boot/grub/grub.cfg
