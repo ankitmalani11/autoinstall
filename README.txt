@@ -45,3 +45,8 @@ xorriso -as mkisofs -r -V "Ubuntu 22 Custom ISO" \
     -eltorito-alt-boot -e '--interval:appended_partition_2:all::' \
     -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus \
     -o ubuntu-22-autoinstall.iso ubuntu_custom_iso
+
+# Sample user-data has below details for login 
+user:  ubuntu  
+password: ubuntu 
+Note: you can change it as per your requirement  
