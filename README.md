@@ -49,4 +49,4 @@ xorriso -as mkisofs -r -V "Ubuntu 22 Custom ISO" \	<br />
     -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus \	<br />
     -o ubuntu-22-autoinstall.iso ubuntu_custom_iso	<br />
 
-#Sample included with username ubuntu and password ubuntu <br />
+# Sample included with username ubuntu and password ubuntu <br />
